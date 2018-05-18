@@ -1,6 +1,6 @@
 package game.model;
 
-public class PlayerTwo
+public class PlayerTwo extends PlayerOne
 {
-
+	
 }
