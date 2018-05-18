@@ -32,7 +32,7 @@ public class GamePanel extends JPanel
 		mainMenu = new JPanel();
 		gamePanel = new JPanel();
 		
-		gameImage = new JLabel("hello");		//new ImageIcon(getClass().getResource("will add soon")), JLabel.CENTER
+		gameImage = new JLabel(new ImageIcon(getClass().getResource("/game/view/images/frogKing.png")), JLabel.CENTER);
 		
 		onePlayer = new JButton("One Player");
 		twoPlayers = new JButton("Two Players");
@@ -61,6 +61,8 @@ public class GamePanel extends JPanel
 		
 		mainMenu.add(onePlayer);
 		mainMenu.add(twoPlayers);
+		
+		//gamePanel.setLayout(layout);
 		
 		gamePanel.add(gameImage);
 		gamePanel.add(scenePanel);
