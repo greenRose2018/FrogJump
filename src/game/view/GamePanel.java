@@ -42,6 +42,19 @@ public class GamePanel extends JPanel
 	}
 	public void setupListeners()
 	{
-		
+		onePlayer.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent selection)
+			{
+				
+			}
+		});
+		twoPlayers.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent selection)
+			{
+				
+			}
+		});
 	}
 }
