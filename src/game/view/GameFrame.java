@@ -1,6 +1,16 @@
 package game.view;
 
-public class GameFrame
-{
+import javax.swing.*;
 
+public class GameFrame extends JFrame
+{
+	public GameFrame()
+	{
+		
+	}
+	
+	public void setupFrame()
+	{
+		
+	}
 }
