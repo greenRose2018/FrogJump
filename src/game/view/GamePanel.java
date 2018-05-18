@@ -61,6 +61,10 @@ public class GamePanel extends JPanel
 		
 		mainMenu.add(onePlayer);
 		mainMenu.add(twoPlayers);
+		SpringLayout sl_gamePanel = new SpringLayout();
+		sl_gamePanel.putConstraint(SpringLayout.NORTH, gameImage, 5, SpringLayout.NORTH, gamePanel);
+		sl_gamePanel.putConstraint(SpringLayout.WEST, gameImage, 209, SpringLayout.WEST, gamePanel);
+		gamePanel.setLayout(sl_gamePanel);
 		
 		//gamePanel.setLayout(layout);
 		
