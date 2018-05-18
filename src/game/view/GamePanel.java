@@ -20,6 +20,15 @@ public class GamePanel extends JPanel
 	
 	public GamePanel(GameController appController)
 	{
+		super();
+		this.appController = appController;
+		layout = new SpringLayout();
+		panelContainer = new JLayeredPane();
+		gameImage = new JLabel(new ImageIcon(getClass().getResource("will add soon")), JLabel.CENTER);		
+		
+		onePlayer = new JButton("One Player");
+		twoPlayers = new JButton("Two Players");
+		
 		
 	}
 	
