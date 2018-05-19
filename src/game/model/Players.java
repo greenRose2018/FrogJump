@@ -7,12 +7,19 @@ public class Players
 	private int attack;
 	private int level;
 	
+	public Players()
+	{
+		this.username = "default";
+		this.health = 10;
+		this.attack = 2;
+		this.level = 0;
+	}
 	public Players(String name)
 	{
 		this.username = name;
 		this.health = 10;
 		this.attack = 2;
-		level = 0;
+		this.level = 0;
 	}
 	
 	public String getUsername()
