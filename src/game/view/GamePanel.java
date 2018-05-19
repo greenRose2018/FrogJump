@@ -11,8 +11,9 @@ public class GamePanel extends JPanel
 {
 	private GameController appController;
 	private SpringLayout layout;
+	private SpringLayout layoutTwo;
+	private SpringLayout layoutThree;
 	
-	private JPanel panelContainer;
 	private JPanel mainMenu;
 	private JPanel gamePanel;
 	private JPanel scenePanel;
@@ -27,19 +28,23 @@ public class GamePanel extends JPanel
 		super();
 		this.appController = appController;
 		layout = new SpringLayout();
+		layoutTwo = new SpringLayout();
+		layoutThree = new SpringLayout();
 		
-		panelContainer = new JPanel();
 		mainMenu = new JPanel();
 		gamePanel = new JPanel();
+		scenePanel = new JPanel();
 		
 		gameImage = new JLabel(new ImageIcon(getClass().getResource("/game/view/images/frogKing.png")), JLabel.CENTER);
-		
 		onePlayer = new JButton("One Player");
 		twoPlayers = new JButton("Two Players");
+		layout.putConstraint(SpringLayout.NORTH, onePlayer, 0, SpringLayout.NORTH, twoPlayers);
+		layout.putConstraint(SpringLayout.EAST, onePlayer, -61, SpringLayout.WEST, twoPlayers);
 		
 		
 		setupPanel();
 		setupLayouts();
+		setupListeners();
 	}
 	
 	public void setupLayouts()
@@ -47,29 +52,35 @@ public class GamePanel extends JPanel
 		mainMenu.setBounds(0, 0, 450, 300);
 		gamePanel.setBounds(0, 0, 450, 300);
 		
+		layoutTwo.putConstraint(SpringLayout.NORTH, scenePanel, 0, SpringLayout.NORTH, gamePanel);
+		layoutTwo.putConstraint(SpringLayout.WEST, scenePanel, 0, SpringLayout.WEST, gamePanel);
+		layoutTwo.putConstraint(SpringLayout.SOUTH, scenePanel, -20, SpringLayout.SOUTH, gamePanel);
+		layoutTwo.putConstraint(SpringLayout.EAST, scenePanel, 0, SpringLayout.EAST, gamePanel);
 		layout.putConstraint(SpringLayout.WEST, twoPlayers, 253, SpringLayout.WEST, mainMenu);
 		layout.putConstraint(SpringLayout.SOUTH, twoPlayers, -108, SpringLayout.SOUTH, mainMenu);
-		layout.putConstraint(SpringLayout.NORTH, onePlayer, 0, SpringLayout.NORTH, twoPlayers);
-		layout.putConstraint(SpringLayout.EAST, onePlayer, -53, SpringLayout.WEST, twoPlayers);
+		layoutThree.putConstraint(SpringLayout.WEST, gameImage, 0, SpringLayout.WEST, scenePanel);
+		layoutThree.putConstraint(SpringLayout.SOUTH, gameImage, 0, SpringLayout.SOUTH, scenePanel);
+		layoutTwo.putConstraint(SpringLayout.WEST, gameImage, 70, SpringLayout.WEST, scenePanel);
+		layoutTwo.putConstraint(SpringLayout.SOUTH, gameImage, -22, SpringLayout.SOUTH, scenePanel);
 	}
 	public void setupPanel()
 	{
-		panelContainer.setLayout(new CardLayout());
-		panelContainer.add(mainMenu);
-		panelContainer.add(gamePanel);
-		mainMenu.setLayout(layout);
+		setLayout(new CardLayout(0,0));
+		this.add(mainMenu);
+		this.add(gamePanel);
 		
+		mainMenu.setLayout(layout);
+		gamePanel.setLayout(layoutTwo);
+		scenePanel.setLayout(layoutThree);
+		
+		mainMenu.setVisible(true);
 		mainMenu.add(onePlayer);
 		mainMenu.add(twoPlayers);
-		SpringLayout sl_gamePanel = new SpringLayout();
-		sl_gamePanel.putConstraint(SpringLayout.NORTH, gameImage, 5, SpringLayout.NORTH, gamePanel);
-		sl_gamePanel.putConstraint(SpringLayout.WEST, gameImage, 209, SpringLayout.WEST, gamePanel);
-		gamePanel.setLayout(sl_gamePanel);
 		
-		//gamePanel.setLayout(layout);
-		
-		gamePanel.add(gameImage);
 		gamePanel.add(scenePanel);
+		gamePanel.setVisible(false);
+		
+		scenePanel.add(gameImage);
 		
 	}
 	public void setupListeners()
@@ -78,7 +89,8 @@ public class GamePanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent selection)
 			{
-				
+				mainMenu.setVisible(false);
+				gamePanel.setVisible(true);
 			}
 		});
 		twoPlayers.addActionListener(new ActionListener()
