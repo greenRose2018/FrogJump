@@ -13,7 +13,7 @@ public class GameFrame extends JFrame
 		super();
 		this.appController = appController;
 		gamePanel = new GamePanel(appController);
-		setupFrame();
+		setupFrame();	
 		
 	}
 	
