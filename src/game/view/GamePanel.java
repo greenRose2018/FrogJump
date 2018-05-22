@@ -38,13 +38,11 @@ public class GamePanel extends JPanel
 		gameImage = new JLabel(new ImageIcon(getClass().getResource("/game/view/images/frogKing.png")), JLabel.CENTER);
 		onePlayer = new JButton("One Player");
 		twoPlayers = new JButton("Two Players");
-		layout.putConstraint(SpringLayout.NORTH, onePlayer, 0, SpringLayout.NORTH, twoPlayers);
-		layout.putConstraint(SpringLayout.EAST, onePlayer, -61, SpringLayout.WEST, twoPlayers);
-		
 		
 		setupPanel();
 		setupLayouts();
 		setupListeners();
+		
 	}
 	
 	public void setupLayouts()
@@ -52,12 +50,17 @@ public class GamePanel extends JPanel
 		mainMenu.setBounds(0, 0, 450, 300);
 		gamePanel.setBounds(0, 0, 450, 300);
 		
+		layout.putConstraint(SpringLayout.NORTH, onePlayer, 0, SpringLayout.NORTH, twoPlayers);
+		layout.putConstraint(SpringLayout.EAST, onePlayer, -142, SpringLayout.WEST, twoPlayers);
+		layout.putConstraint(SpringLayout.NORTH, twoPlayers, -161, SpringLayout.SOUTH, mainMenu);
+		layout.putConstraint(SpringLayout.SOUTH, twoPlayers, 0, SpringLayout.SOUTH, onePlayer);
+		layout.putConstraint(SpringLayout.EAST, twoPlayers, -108, SpringLayout.EAST, mainMenu);
+		layout.putConstraint(SpringLayout.WEST, onePlayer, 100, SpringLayout.WEST, mainMenu);
+		layout.putConstraint(SpringLayout.SOUTH, onePlayer, -108, SpringLayout.SOUTH, mainMenu);
 		layoutTwo.putConstraint(SpringLayout.NORTH, scenePanel, 0, SpringLayout.NORTH, gamePanel);
 		layoutTwo.putConstraint(SpringLayout.WEST, scenePanel, 0, SpringLayout.WEST, gamePanel);
 		layoutTwo.putConstraint(SpringLayout.SOUTH, scenePanel, -20, SpringLayout.SOUTH, gamePanel);
 		layoutTwo.putConstraint(SpringLayout.EAST, scenePanel, 0, SpringLayout.EAST, gamePanel);
-		layout.putConstraint(SpringLayout.WEST, twoPlayers, 253, SpringLayout.WEST, mainMenu);
-		layout.putConstraint(SpringLayout.SOUTH, twoPlayers, -108, SpringLayout.SOUTH, mainMenu);
 		layoutThree.putConstraint(SpringLayout.WEST, gameImage, 0, SpringLayout.WEST, scenePanel);
 		layoutThree.putConstraint(SpringLayout.SOUTH, gameImage, 0, SpringLayout.SOUTH, scenePanel);
 		layoutTwo.putConstraint(SpringLayout.WEST, gameImage, 70, SpringLayout.WEST, scenePanel);
@@ -101,4 +104,7 @@ public class GamePanel extends JPanel
 			}
 		});
 	}
+	
+	
+	
 }
