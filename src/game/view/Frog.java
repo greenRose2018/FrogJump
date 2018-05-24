@@ -9,30 +9,38 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Frog extends JPanel implements ActionListener, KeyListener
+import game.model.Player;
+
+public class Frog extends JPanel implements ActionListener, KeyListener, Player
 {
 	private Timer timer;
 	private double x;
 	private double y;
 	private double velx;
 	private double vely;
-	//private ImageIcon frogImage;
 	private BufferedImage frogImage;
+	
+	private int attack;
+	private int score;
+	private int health;
+	
 	public Frog()
 	{		
+		attack = 2;
+		score = 0;
+		health = 10;
+		
 		x = 0;
 		y = 0;
 		velx = 0;
 		vely = 0;
 		
-		//frogImage = new ImageIcon("game/view/images/frogKing.png");
 		try
 		{
 			frogImage = ImageIO.read(getClass().getResource("images/frogKing.png"));
 		}
 		catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -102,6 +110,21 @@ public class Frog extends JPanel implements ActionListener, KeyListener
 	{
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public int getHealth()
+	{
+		return health;
+	}
+	
+	public int getScore()
+	{
+		return score;
+	}
+	
+	public int getAttack()
+	{
+		return attack;
 	}
 	@Override
 	public void paintComponent(Graphics graphics)
