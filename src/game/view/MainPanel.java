@@ -6,7 +6,6 @@ import java.awt.image.*;
 
 import javax.swing.*;
 import game.controller.GameController;
-import net.miginfocom.swing.MigLayout;
 
 public class MainPanel extends JPanel
 {
