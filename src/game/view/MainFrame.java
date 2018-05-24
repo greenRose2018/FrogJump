@@ -14,7 +14,6 @@ public class MainFrame extends JFrame
 		this.appController = appController;
 		gamePanel = new MainPanel(appController);
 		setupFrame();	
-		
 	}
 	
 	public void setupFrame()
