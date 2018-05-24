@@ -18,6 +18,8 @@ public class GamePanel extends JPanel
 	private JPanel gamePanel;
 	private JPanel scenePanel;
 	
+	private Frog animation;
+	
 	private JButton onePlayer;
 	private JButton twoPlayers;
 	private JLabel gameImage;
@@ -34,6 +36,8 @@ public class GamePanel extends JPanel
 		mainMenu = new JPanel();
 		gamePanel = new JPanel();
 		scenePanel = new JPanel();
+		
+		animation = new Frog();
 		
 		gameImage = new JLabel(new ImageIcon(getClass().getResource("/game/view/images/frogKing.png")), JLabel.CENTER);
 		onePlayer = new JButton("One Player");
