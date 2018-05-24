@@ -3,16 +3,16 @@ package game.view;
 import game.controller.*;
 import javax.swing.*;
 
-public class GameFrame extends JFrame
+public class MainFrame extends JFrame
 {
 	private GameController appController;
-	private GamePanel gamePanel;
+	private MainPanel gamePanel;
 	
-	public GameFrame(GameController appController)
+	public MainFrame(GameController appController)
 	{
 		super();
 		this.appController = appController;
-		gamePanel = new GamePanel(appController);
+		gamePanel = new MainPanel(appController);
 		setupFrame();	
 		
 	}

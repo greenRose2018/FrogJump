@@ -6,26 +6,27 @@ import java.awt.image.*;
 
 import javax.swing.*;
 import game.controller.GameController;
+import net.miginfocom.swing.MigLayout;
 
-public class GamePanel extends JPanel
+public class MainPanel extends JPanel
 {
 	private GameController appController;
 	private SpringLayout layout;
 	private SpringLayout layoutTwo;
 	private SpringLayout layoutThree;
 	
-	private JPanel mainMenu;
-	private JPanel gamePanel;
-	private JPanel scenePanel;
+	private GameFrame frame;
 	
-	private Frog animation;
+	private JPanel mainMenu;
+	private JPanel scorePanel;
+	//private JPanel scenePanel;
 	
 	private JButton onePlayer;
 	private JButton twoPlayers;
 	private JLabel gameImage;
 	
 	
-	public GamePanel(GameController appController)
+	public MainPanel(GameController appController)
 	{
 		super();
 		this.appController = appController;
@@ -33,11 +34,12 @@ public class GamePanel extends JPanel
 		layoutTwo = new SpringLayout();
 		layoutThree = new SpringLayout();
 		
-		mainMenu = new JPanel();
-		gamePanel = new JPanel();
-		scenePanel = new JPanel();
 		
-		animation = new Frog();
+		
+		mainMenu = new JPanel();
+		scorePanel = new JPanel();
+//		scenePanel = new JPanel();
+		
 		
 		gameImage = new JLabel(new ImageIcon(getClass().getResource("/game/view/images/frogKing.png")), JLabel.CENTER);
 		onePlayer = new JButton("One Player");
@@ -52,7 +54,7 @@ public class GamePanel extends JPanel
 	public void setupLayouts()
 	{
 		mainMenu.setBounds(0, 0, 450, 300);
-		gamePanel.setBounds(0, 0, 450, 300);
+		scorePanel.setBounds(0, 0, 450, 300);
 		
 		layout.putConstraint(SpringLayout.NORTH, onePlayer, 0, SpringLayout.NORTH, twoPlayers);
 		layout.putConstraint(SpringLayout.EAST, onePlayer, -142, SpringLayout.WEST, twoPlayers);
@@ -61,33 +63,27 @@ public class GamePanel extends JPanel
 		layout.putConstraint(SpringLayout.EAST, twoPlayers, -108, SpringLayout.EAST, mainMenu);
 		layout.putConstraint(SpringLayout.WEST, onePlayer, 100, SpringLayout.WEST, mainMenu);
 		layout.putConstraint(SpringLayout.SOUTH, onePlayer, -108, SpringLayout.SOUTH, mainMenu);
-		layoutTwo.putConstraint(SpringLayout.NORTH, scenePanel, 0, SpringLayout.NORTH, gamePanel);
-		layoutTwo.putConstraint(SpringLayout.WEST, scenePanel, 0, SpringLayout.WEST, gamePanel);
-		layoutTwo.putConstraint(SpringLayout.SOUTH, scenePanel, -20, SpringLayout.SOUTH, gamePanel);
-		layoutTwo.putConstraint(SpringLayout.EAST, scenePanel, 0, SpringLayout.EAST, gamePanel);
-		layoutThree.putConstraint(SpringLayout.WEST, gameImage, 0, SpringLayout.WEST, scenePanel);
-		layoutThree.putConstraint(SpringLayout.SOUTH, gameImage, 0, SpringLayout.SOUTH, scenePanel);
-		layoutTwo.putConstraint(SpringLayout.WEST, gameImage, 70, SpringLayout.WEST, scenePanel);
-		layoutTwo.putConstraint(SpringLayout.SOUTH, gameImage, -22, SpringLayout.SOUTH, scenePanel);
+//		layoutThree.putConstraint(SpringLayout.WEST, gameImage, 0, SpringLayout.WEST, scenePanel);
+//		layoutThree.putConstraint(SpringLayout.SOUTH, gameImage, 0, SpringLayout.SOUTH, scenePanel);
+//		layoutTwo.putConstraint(SpringLayout.WEST, gameImage, 70, SpringLayout.WEST, scenePanel);
+//		layoutTwo.putConstraint(SpringLayout.SOUTH, gameImage, -22, SpringLayout.SOUTH, scenePanel);
 	}
 	public void setupPanel()
 	{
 		setLayout(new CardLayout(0,0));
 		this.add(mainMenu);
-		this.add(gamePanel);
+		this.add(scorePanel);
 		
 		mainMenu.setLayout(layout);
-		gamePanel.setLayout(layoutTwo);
-		scenePanel.setLayout(layoutThree);
+		scorePanel.setLayout(layoutTwo);
+		//scenePanel.setLayout(null);
 		
 		mainMenu.setVisible(true);
 		mainMenu.add(onePlayer);
 		mainMenu.add(twoPlayers);
 		
-		gamePanel.add(scenePanel);
-		gamePanel.setVisible(false);
-		
-		scenePanel.add(gameImage);
+		//scorePanel.add();
+		scorePanel.setVisible(false);
 		
 	}
 	public void setupListeners()
@@ -97,14 +93,17 @@ public class GamePanel extends JPanel
 			public void actionPerformed(ActionEvent selection)
 			{
 				mainMenu.setVisible(false);
-				gamePanel.setVisible(true);
+				scorePanel.setVisible(true);
+				frame = new GameFrame();
 			}
 		});
 		twoPlayers.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent selection)
 			{
-				
+				mainMenu.setVisible(false);
+				scorePanel.setVisible(true);
+				frame = new GameFrame();
 			}
 		});
 	}
