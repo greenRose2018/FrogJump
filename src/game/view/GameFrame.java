@@ -17,7 +17,7 @@ public class GameFrame extends JFrame
 		this.add(frog);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(800, 600);
+		this.setSize(600, 600);
 	}
 
 }
