@@ -33,8 +33,6 @@ public class MainPanel extends JPanel
 		layoutTwo = new SpringLayout();
 		layoutThree = new SpringLayout();
 		
-		
-		
 		mainMenu = new JPanel();
 		scorePanel = new JPanel();
 //		scenePanel = new JPanel();

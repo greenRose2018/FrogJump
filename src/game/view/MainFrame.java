@@ -34,7 +34,4 @@ public class MainFrame extends JFrame
 		this.appController = appController;
 	}
 
-	
-	
-	
 }
