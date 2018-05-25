@@ -31,7 +31,7 @@ public class Frog extends JPanel implements ActionListener, KeyListener, Player
 		health = 10;
 		
 		x = 0;
-		y = 0;
+		y = 40;
 		velx = 0;
 		vely = 0;
 		
@@ -44,7 +44,7 @@ public class Frog extends JPanel implements ActionListener, KeyListener, Player
 			e.printStackTrace();
 		}
 		
-		timer = new Timer(5,this);
+		timer = new Timer(10,this);
 		timer.start();
 		addKeyListener(this);
 		setFocusable(true);
