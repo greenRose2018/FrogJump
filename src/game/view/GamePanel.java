@@ -3,6 +3,8 @@ package game.view;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GamePanel extends JPanel
 {
@@ -28,6 +30,13 @@ public class GamePanel extends JPanel
 	public void setupListeners()
 	{
 		
+		menu.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				//work on this
+			}
+		});
 		
 	}
 	public void setupPanel()
